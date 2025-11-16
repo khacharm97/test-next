@@ -64,95 +64,12 @@ test-next/
 4. **Open your browser:**
    Navigate to [http://localhost:3001](http://localhost:3001) (or the port shown in your terminal)
 
-## API Integration
-
-The application consumes a backend API with the following endpoints:
-
-- **POST** `{BACKEND_URL}/auth/register` - Register a new user
-- **GET** `{BACKEND_URL}/auth/users` - Fetch all users
-
-The backend URL is configured via the `NEXT_PUBLIC_API_URL` environment variable.
-
-### API Client
-
-The API client (`lib/api.ts`) provides:
-- `registerUser(data: RegisterUserDto)` - Register a new user
-- `getUsers()` - Fetch all users
-
-Both functions handle errors and return typed responses.
-
-## UI Component Library
-
-### Button
-- Supports multiple variants: `primary`, `secondary`, `outline`, `danger`
-- Accessible with proper `type` attributes
-- Responsive and mobile-friendly
-
-### InputField
-- Linked labels with `htmlFor` and `id`
-- Error message display with `aria-invalid`
-- Full-width support on mobile
-- Required field indicators
-
-### Modal
-- Accessible with `role="dialog"` and `aria-modal`
-- Keyboard support (ESC to close)
-- Click outside to close
-- Prevents body scroll when open
-
-### Tabs
-- Keyboard navigable (Arrow keys, Home, End)
-- ARIA roles for accessibility
-- Smooth transitions
-
-### Card
-- Clean container component
-- Optional title section
-- Responsive padding and spacing
-
-## Pages
-
-### Home Page (`/`)
-- Landing page with navigation links
-- Links to registration and user list pages
-
-### Registration Page (`/auth/register`)
-- Client-side form with validation
-- Fields: email (required), password (required, min 6 chars), fullName (optional)
-- Loading, success, and error states
-- Success modal with navigation option
-- Tabs component to switch between Register and Users views
-
-### User List Page (`/users`)
-- Server-side rendered using Next.js App Router
-- Displays users in a responsive grid
-- Shows email, fullName, and formatted createdAt
-- Handles empty state and error states
-- Link to registration page
-
-## State Handling
-
-- **Loading states**: Disabled buttons and loading text during API calls
-- **Error states**: Inline error messages and error cards
-- **Success states**: Modal dialogs and success messages
-
-## Accessibility
-
-- Semantic HTML elements
-- ARIA attributes where needed (`aria-label`, `aria-invalid`, `aria-describedby`)
-- Keyboard navigation support (tabs, modals)
-- Focus management
-- Screen reader friendly labels
-
-## Responsiveness
-
-- Mobile-first design approach
-- Responsive grid layouts
-- Flexible containers with max-width constraints
-- Touch-friendly button sizes
-- Responsive typography
-
 ## Development
+
+### Testing
+```bash
+yarn run test    # Run tests with Jest
+```
 
 ### Code Formatting
 ```bash
@@ -169,25 +86,3 @@ yarn run lint    # Run ESLint
 yarn run build   # Build for production
 yarn start       # Start production server
 ```
-
-## Configuration
-
-### TailwindCSS
-Configured in `tailwind.config.ts` with custom primary color palette.
-
-### ESLint
-Uses Next.js recommended rules with TypeScript support.
-
-### Prettier
-Configured with TailwindCSS plugin for class sorting.
-
-## Deployment
-
-This application is ready for deployment on platforms like Vercel:
-
-1. Push your code to a Git repository
-2. Import the project in Vercel
-3. Set the `NEXT_PUBLIC_API_URL` environment variable
-4. Deploy
-
-The application uses Next.js App Router and is optimized for production builds.
